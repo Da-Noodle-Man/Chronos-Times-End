@@ -25,20 +25,21 @@ Now, Chronos, the Titan of Time, attempts to shatter his chains and escape Tarta
 
 ## 🎮 Basic Mechanics
 * **Movement:** Keyboard [W, A, S, D] or Arrow Keys.
-* **Combat Aiming:** Custom Hardware Motion-Controller (calculating both physical angles and raw acceleration for precise cursor tracking).
-* **Attack:** [Left Click] / [Spacebar].
-* **Dash:** [Shift].
+* **Combat Aiming:** Custom Hardware Motion-Controller (calculating both physical angles and raw acceleration concurrently for precise cursor tracking).
+* **Attack:** [Left Click]
+* **Dash:** [Spacebar]
 
 ---
 
 ## ⚔️ The Mission & Mechanics (Brief Overview)
-* **The Task:** Navigate the Tartarus Arena and survive a grueling, high-difficulty boss rush against Chronos to reclaim your soul.
-* **The Curse:** The demonic pact binds your mortality. Taking hits from Chronos's temporal attacks is devastating, forcing a heavy reliance on precise evasion over brute force.
+* **The Hub:** Your safe haven. Walk into the **Blue Portal** to enter the Tartarus boss arena. Walk into the **Red Portal** to quit the game.
+* **The Core Mechanic (1-Hit Death):** You are completely mortal. Taking a single hit from Chronos will kill you instantly. Perfect evasion is not just recommended; it is a strict requirement for survival.
+* **The Curse (Wrath of Nyx):** The demonic pact restricts your vision, shrouding the arena in darkness and forcing you to react quickly to incoming threats.
 * **The Boon (Hermes' Blessing):** Grants the *Hermes Sandals*, which heavily modifies the player's physical dash logic—reducing stamina costs, altering dash speed, and providing crucial invincibility frames (i-frames) to dodge through attacks.
 * **The Three Phases:** 
-  1. **Immortality:** Chronos is shielded and invulnerable.
+  1. **Immortality:** Chronos is shielded and invulnerable. You must bait his attacks to destroy his shield.
   2. **Execution:** The shield breaks, forcing Chronos into aggressive melee and ranged patterns.
-  3. **True Form:** Chronos rewinds time, reclaiming his health and unleashing enhanced, screen-wide ultimate attacks.
+  3. **True Form:** Chronos rewinds time and unleashes vastly enhanced, highly lethal versions of all his previous attacks.
 
 ---
 
@@ -46,8 +47,8 @@ Now, Chronos, the Titan of Time, attempts to shatter his chains and escape Tarta
 
 For evaluators and developers, the Chronos boss fight is governed by a custom C# state-machine (`ChronosBrain.cs` and `ChronosBoss.cs`), utilizing distance-checking algorithms to dynamically alter attack combos.
 
-### Phase 1: Immortality Shield
-Chronos begins the fight completely immune to standard damage. The player must navigate the arena and devour the Prometheus Flames scattered across the map. The state machine listens for the `OnFlameDevoured` signal; once all flames are extinguished, the shield shatters, triggering Phase 2.
+### Phase 1: Immortality Shield & The Gluttony Mechanic
+Chronos begins the fight completely immune to standard damage. To shatter this shield, the player must utilize the environment. Six white square "Prometheus Flames" are scattered across the map. The player must strategically position themselves to bait Chronos into using his "Gluttony" attack directly over these squares to devour the flames. The state machine listens for the `OnFlameDevoured` signal; once all six flames are consumed, the shield shatters, triggering Phase 2.
 
 ### Phase 2: Execution
 With immortality broken, Chronos utilizes a positioning algorithm to maintain specific ranges from the player, randomly selecting from three core attacks based on proximity:
@@ -57,5 +58,5 @@ With immortality broken, Chronos utilizes a positioning algorithm to maintain sp
 
 ### Phase 3: True Form (Rewind)
 Upon reaching 0 HP in Phase 2, the AI triggers a `CallDeferred` rewind sequence, restoring his health pool and overriding his previous cooldown timers. 
-* **Enhanced AI:** Phase 3 introduces advanced combo chains (`interceptorCombo`, `enragerCombo`). If the player attempts to "kite" the boss by staying too far away, Chronos detects the distance and punishes the player with an immediate teleport and a 6-orb barrage.
+* **Enhanced AI:** Phase 3 introduces advanced combo chains (`interceptorCombo`, `enragerCombo`). Every attack from Phase 2 (Sweep, Jump, Orbs, Gluttony) is executed in a highly enhanced, faster variant. If the player attempts to "kite" the boss by staying too far away, Chronos detects the distance and punishes the player with an immediate teleport and a 6-orb barrage.
 * **Clockwork Cleave (Ultimate):** At 66% and 33% health thresholds, Chronos enters an `UltimateOverride` state, halting all standard logic to execute a massive, multi-stage rotating laser sweep that blankets the entire Tartarus arena.
