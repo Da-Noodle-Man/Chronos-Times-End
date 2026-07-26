@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cy54p5vt7v0c"]
+
+[ext_resource type="Script" uid="uid://pcqyg3thvey6" path="res://EarthPillar.cs" id="1_l7uol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bh10w"]
+size = Vector2(42, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7uol"]
+size = Vector2(40, 40)
+
+[node name="EarthPillar" type="Area2D" unique_id=1441798687]
+script = ExtResource("1_l7uol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1707156388]
+shape = SubResource("RectangleShape2D_bh10w")
+
+[node name="WallPhysics" type="StaticBody2D" parent="." unique_id=1022782353]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallPhysics" unique_id=1456502077]
+shape = SubResource("RectangleShape2D_l7uol")
+
+[node name="VisualWrapper" type="Node2D" parent="." unique_id=1094105970]
+
+[node name="ColorRect" type="ColorRect" parent="VisualWrapper" unique_id=1764795628]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.35686275, 0.10980392, 0.11372549, 1)

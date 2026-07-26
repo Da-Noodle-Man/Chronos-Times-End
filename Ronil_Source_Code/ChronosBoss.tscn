@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://mm3eud50hmou"]
+
+[ext_resource type="Script" uid="uid://dt3e8lv7hcair" path="res://ChronosBoss.cs" id="1_lurbw"]
+[ext_resource type="Script" uid="uid://bq22xsx0sjfuv" path="res://ChronosBrain.cs" id="2_dr1a1"]
+[ext_resource type="Script" uid="uid://d0nyew2pl3qpv" path="res://ChronosAttacks.cs" id="3_bkovi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lurbw"]
+size = Vector2(450, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wriwk"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dr1a1"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkovi"]
+size = Vector2(40, 40)
+
+[node name="ChronosBoss" type="CharacterBody2D" unique_id=497259464]
+script = ExtResource("1_lurbw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1996076268]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0, 0, 0, 1)
+
+[node name="AccumulateHpTimer" type="Timer" parent="." unique_id=1822341693]
+
+[node name="ShieldVisual" type="ColorRect" parent="." unique_id=1198074390]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+color = Color(0.5058824, 0.9607843, 1, 0.5882353)
+
+[node name="RewindTimer" type="Timer" parent="." unique_id=561909966]
+wait_time = 5.0
+one_shot = true
+
+[node name="AttackCooldownTimer" type="Timer" parent="." unique_id=494229668]
+wait_time = 10.0
+
+[node name="SweepHitbox" type="Area2D" parent="." unique_id=183160078]
+
+[node name="ClockHandVisual" type="ColorRect" parent="SweepHitbox" unique_id=1736753637]
+offset_top = -10.0
+offset_right = 450.0
+offset_bottom = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SweepHitbox" unique_id=1283841078]
+position = Vector2(225, 0)
+shape = SubResource("RectangleShape2D_lurbw")
+
+[node name="BossHurtbox" type="Area2D" parent="." unique_id=1086540166 groups=["Boss"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossHurtbox" unique_id=1053132164]
+shape = SubResource("RectangleShape2D_wriwk")
+
+[node name="BossVisuals" type="Node2D" parent="." unique_id=940714142]
+
+[node name="SlamHitbox" type="Area2D" parent="." unique_id=1679151125]
+
+[node name="RectangleShape2D" type="CollisionShape2D" parent="SlamHitbox" unique_id=1223206289]
+shape = SubResource("RectangleShape2D_dr1a1")
+
+[node name="Brain" type="Node" parent="." unique_id=1434412870]
+script = ExtResource("2_dr1a1")
+
+[node name="Attacks" type="Node2D" parent="." unique_id=575075446]
+script = ExtResource("3_bkovi")
+
+[node name="ContactHitbox" type="Area2D" parent="." unique_id=482107470]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactHitbox" unique_id=93603063]
+shape = SubResource("RectangleShape2D_bkovi")
+
+[connection signal="timeout" from="AccumulateHpTimer" to="." method="OnHpTimerTimeout"]
+[connection signal="timeout" from="RewindTimer" to="." method="OnRewindTimerTimeout"]

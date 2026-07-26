@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dsgrgfre4kmyi"]
+
+[ext_resource type="Script" uid="uid://b74swqkqapde0" path="res://OrbOfTime.cs" id="1_kg5s3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl8yp"]
+size = Vector2(30, 30)
+
+[sub_resource type="Gradient" id="Gradient_kg5s3"]
+offsets = PackedFloat32Array(0, 0.9982206)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rj00f"]
+gradient = SubResource("Gradient_kg5s3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="OrbOfTime" type="Area2D" unique_id=434219746]
+script = ExtResource("1_kg5s3")
+
+[node name="VisualCore" type="ColorRect" parent="." unique_id=1281005563]
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 15.0
+offset_bottom = 15.0
+color = Color(0, 0.4627451, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1640729536]
+shape = SubResource("RectangleShape2D_xl8yp")
+
+[node name="TargetLaser" type="Line2D" parent="." unique_id=2022562534]
+points = PackedVector2Array(0, 0, 100, 0)
+default_color = Color(0.8901961, 0, 0, 1)
+
+[node name="AdjustmentTimer" type="Timer" parent="." unique_id=80602453]
+wait_time = 1.5
+one_shot = true
+
+[node name="LockOnTimer" type="Timer" parent="." unique_id=1027884560]
+wait_time = 0.5
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1791615882]
+texture = SubResource("GradientTexture2D_rj00f")
+texture_scale = 0.7
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="timeout" from="AdjustmentTimer" to="." method="OnAdjustmentTimerTimeout"]
+[connection signal="timeout" from="LockOnTimer" to="." method="OnLockOnTimerTimeout"]

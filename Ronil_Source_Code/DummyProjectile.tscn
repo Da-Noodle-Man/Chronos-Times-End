@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b72008tfieiyh"]
+
+[ext_resource type="Script" uid="uid://5h8b25hiboux" path="res://DummyProjectile.cs" id="1_hl5cj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uemrv"]
+size = Vector2(40, 40)
+
+[node name="DummyProjectile" type="Area2D" unique_id=1508776779 groups=["BossAttack"]]
+script = ExtResource("1_hl5cj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1782259187]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.7693291, 0.08909271, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=245531455]
+shape = SubResource("RectangleShape2D_uemrv")

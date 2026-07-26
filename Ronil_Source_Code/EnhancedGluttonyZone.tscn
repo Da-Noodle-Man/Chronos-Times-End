@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bde0u4r5q3fwr"]
+
+[ext_resource type="Script" uid="uid://2hsoyyue0q1w" path="res://GluttonyZone.cs" id="1_vl5xt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vk38"]
+size = Vector2(384, 384)
+
+[node name="GluttonyZone" type="Area2D" unique_id=1318815539]
+script = ExtResource("1_vl5xt")
+
+[node name="WarningVisual" type="ColorRect" parent="." unique_id=533734905]
+offset_left = -192.0
+offset_top = -192.0
+offset_right = 192.0
+offset_bottom = 192.0
+
+[node name="KillZone" type="CollisionShape2D" parent="." unique_id=1155820745]
+shape = SubResource("RectangleShape2D_2vk38")
+
+[node name="TelegraphTimer" type="Timer" parent="." unique_id=70192514]
+one_shot = true
+
+[node name="RegenTimer" type="Timer" parent="." unique_id=492400976]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="timeout" from="TelegraphTimer" to="." method="OnTelegraphTimerTimeout"]
+[connection signal="timeout" from="RegenTimer" to="." method="OnRegenTimerTimeout"]

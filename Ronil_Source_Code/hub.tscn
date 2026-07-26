@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bxvxb5ydo5fey"]
+
+[ext_resource type="Script" uid="uid://xmla7h45pdob" path="res://HubManager.cs" id="1_hjueh"]
+[ext_resource type="PackedScene" uid="uid://2ochiad3yve7" path="res://player.tscn" id="1_l10or"]
+[ext_resource type="Texture2D" uid="uid://3bhvbwylvufm" path="res://environments/hub_void_bg.jpg" id="3_w7r13"]
+[ext_resource type="Texture2D" uid="uid://cfjuxswtsdjg5" path="res://environments/inner_visual_final.png" id="4_ysrp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlmhu"]
+size = Vector2(1000, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l10or"]
+size = Vector2(1000, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjueh"]
+size = Vector2(2, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7r13"]
+size = Vector2(2, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysrp0"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eldl"]
+size = Vector2(100, 100)
+
+[node name="HubArena" type="Node2D" unique_id=616872053]
+script = ExtResource("1_hjueh")
+
+[node name="WallCollisions" type="StaticBody2D" parent="." unique_id=1743389006]
+
+[node name="TopWall" type="CollisionShape2D" parent="WallCollisions" unique_id=589684346]
+position = Vector2(0, -501)
+shape = SubResource("RectangleShape2D_qlmhu")
+
+[node name="BottomWall" type="CollisionShape2D" parent="WallCollisions" unique_id=292180534]
+position = Vector2(0, 501)
+shape = SubResource("RectangleShape2D_l10or")
+
+[node name="LeftWall" type="CollisionShape2D" parent="WallCollisions" unique_id=70360530]
+position = Vector2(-501, 0)
+shape = SubResource("RectangleShape2D_hjueh")
+
+[node name="RightWall" type="CollisionShape2D" parent="WallCollisions" unique_id=1122921899]
+position = Vector2(501, 0)
+shape = SubResource("RectangleShape2D_w7r13")
+
+[node name="HubFloor" type="Sprite2D" parent="." unique_id=550494921]
+texture = ExtResource("4_ysrp0")
+
+[node name="player" parent="." unique_id=730405224 instance=ExtResource("1_l10or")]
+position = Vector2(-1, 159)
+
+[node name="BossPortal" type="Area2D" parent="." unique_id=857625845]
+position = Vector2(313, -297)
+
+[node name="ColorRect" type="ColorRect" parent="BossPortal" unique_id=1657726652]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+color = Color(0, 0.03137255, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossPortal" unique_id=1249988590]
+shape = SubResource("RectangleShape2D_ysrp0")
+
+[node name="QuitPortal" type="Area2D" parent="." unique_id=1745196032]
+position = Vector2(-282, -314)
+
+[node name="ColorRect" type="ColorRect" parent="QuitPortal" unique_id=1968777847]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuitPortal" unique_id=1853285964]
+shape = SubResource("RectangleShape2D_6eldl")
+
+[node name="VoidParallax" type="Parallax2D" parent="." unique_id=1867142019]
+z_index = -10
+scroll_scale = Vector2(0.3, 0.3)
+autoscroll = Vector2(2, 4)
+
+[node name="OutsideVisual" type="Sprite2D" parent="VoidParallax" unique_id=34311731]
+texture_repeat = 2
+texture = ExtResource("3_w7r13")
+region_enabled = true
+region_rect = Rect2(-3000, -1500, 6000, 3000)

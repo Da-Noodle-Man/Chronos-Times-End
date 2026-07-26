@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bn80w6ishlxte"]
+
+[ext_resource type="PackedScene" uid="uid://mm3eud50hmou" path="res://ChronosBoss.tscn" id="1_1qm0g"]
+[ext_resource type="PackedScene" uid="uid://2ochiad3yve7" path="res://player.tscn" id="1_qnuta"]
+[ext_resource type="PackedScene" uid="uid://cu7my44w1d65h" path="res://PrometheusFlame.tscn" id="1_ympqm"]
+[ext_resource type="Script" uid="uid://camjv30kigqvo" path="res://WrathOfNyx.cs" id="3_1qm0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(64, 1294)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(63.99997, 2300)
+
+[node name="TartarusArena" type="Node2D" unique_id=136643670 groups=["BossAttack"]]
+
+[node name="PlaceholderFloor" type="ColorRect" parent="." unique_id=1036135064]
+offset_left = -5000.0
+offset_top = -3500.0
+offset_right = 5000.0
+offset_bottom = 3500.0
+color = Color(0.2789908, 0.27899083, 0.27899083, 1)
+
+[node name="PrometheusFlame" parent="." unique_id=501692120 instance=ExtResource("1_ympqm")]
+position = Vector2(-774, 9)
+
+[node name="PrometheusFlame2" parent="." unique_id=1999543985 instance=ExtResource("1_ympqm")]
+position = Vector2(-780, 9)
+
+[node name="PrometheusFlame3" parent="." unique_id=660994988 instance=ExtResource("1_ympqm")]
+position = Vector2(-779, 11)
+
+[node name="PrometheusFlame4" parent="." unique_id=806080314 instance=ExtResource("1_ympqm")]
+position = Vector2(-772, 11)
+
+[node name="PrometheusFlame5" parent="." unique_id=2120403174 instance=ExtResource("1_ympqm")]
+position = Vector2(-774, 17)
+
+[node name="PrometheusFlame6" parent="." unique_id=1919966075 instance=ExtResource("1_ympqm")]
+position = Vector2(-775, 14)
+
+[node name="ChronosBoss" parent="." unique_id=497259464 groups=["Boss"] instance=ExtResource("1_1qm0g")]
+position = Vector2(533, 3)
+ArenaMinBounds = Vector2(-1060, -557)
+ArenaMaxBounds = Vector2(1063, 559)
+
+[node name="player" parent="." unique_id=730405224 instance=ExtResource("1_qnuta")]
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1736064533 groups=["Environment"]]
+position = Vector2(1120, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Wall" unique_id=630234253]
+offset_left = -32.0
+offset_top = -647.0
+offset_right = 32.0
+offset_bottom = 647.0
+color = Color(0.28871632, 0.11353435, 0.010713881, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=414214737]
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="Wall2" type="StaticBody2D" parent="." unique_id=1081208790 groups=["Environment"]]
+position = Vector2(-1117, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Wall2" unique_id=853621424]
+offset_left = -32.0
+offset_top = -647.0
+offset_right = 32.0
+offset_bottom = 647.0
+color = Color(0.28871632, 0.11353435, 0.010713881, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=940570151]
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="Wall3" type="StaticBody2D" parent="." unique_id=2110214074 groups=["Environment"]]
+position = Vector2(1, 616)
+rotation = 1.5707964
+
+[node name="ColorRect" type="ColorRect" parent="Wall3" unique_id=2022074014]
+offset_left = -32.0
+offset_top = -1150.0
+offset_right = 32.0
+offset_bottom = 1150.0
+color = Color(0.28871632, 0.11353435, 0.010713881, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3" unique_id=1328492864]
+position = Vector2(0, 2.6679314e-12)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Wall4" type="StaticBody2D" parent="." unique_id=665803404 groups=["Environment"]]
+position = Vector2(1, -614)
+rotation = 1.5707964
+
+[node name="ColorRect" type="ColorRect" parent="Wall4" unique_id=284296945]
+offset_left = -32.0
+offset_top = -1150.0
+offset_right = 32.0
+offset_bottom = 1150.0
+color = Color(0.28871632, 0.11353435, 0.010713881, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4" unique_id=1230866524]
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="WrathOfNyx" type="Node" parent="." unique_id=2051148584]
+script = ExtResource("3_1qm0g")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="WrathOfNyx" unique_id=532151531]
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1457116728]
+position = Vector2(-1085, -582)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=467952936]
+position = Vector2(1088, 584)

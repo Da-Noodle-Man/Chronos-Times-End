@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cu7my44w1d65h"]
+
+[ext_resource type="Script" uid="uid://baaf5ycgssuv8" path="res://PrometheusFlame.cs" id="1_73scf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5w6l"]
+size = Vector2(50, 50)
+
+[node name="PrometheusFlame" type="StaticBody2D" unique_id=227328634]
+script = ExtResource("1_73scf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1131387993]
+shape = SubResource("RectangleShape2D_n5w6l")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1865823183]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0

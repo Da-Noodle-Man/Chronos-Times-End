@@ -1,0 +1,276 @@
+[gd_scene format=3 uid="uid://2ochiad3yve7"]
+
+[ext_resource type="Script" uid="uid://bw4m41t76xcwl" path="res://Player.cs" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://bimx2bo4e8ihf" path="res://SimpleSword.cs" id="2_onrkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/SimpleSword/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivot/SimpleSword/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponPivot/SimpleSword:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+resource_name = "attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -2.0943952]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/SimpleSword/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivot/SimpleSword/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponPivot/SimpleSword:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_dw050"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.63529414, 1, 0.2784314, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2hs0m"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponPivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/SimpleSword/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivot/SimpleSword/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponPivot/SimpleSword:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dw050"]
+_data = {
+&"RESET": SubResource("Animation_i3pqv"),
+&"attack": SubResource("Animation_hqtel"),
+&"death": SubResource("Animation_dw050"),
+&"idle": SubResource("Animation_2hs0m")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(200, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_onrkg"]
+bg_color = Color(0.15501785, 0.6401468, 0.9082603, 1)
+
+[sub_resource type="Gradient" id="Gradient_onrkg"]
+offsets = PackedFloat32Array(0, 0.9714765)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i3pqv"]
+gradient = SubResource("Gradient_onrkg")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="player" type="CharacterBody2D" unique_id=730405224 groups=["Player"]]
+z_index = 10
+script = ExtResource("1_4flbx")
+
+[node name="PlayerHurtbox" type="Area2D" parent="." unique_id=2110866883]
+
+[node name="HurtboxCollider" type="CollisionShape2D" parent="PlayerHurtbox" unique_id=488702549]
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=920148783]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="." unique_id=1506978491]
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=971086279]
+zoom = Vector2(0.55, 0.55)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=368414621]
+libraries/ = SubResource("AnimationLibrary_dw050")
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=1542786905]
+position = Vector2(-1.6298152e-08, -7.6293945e-06)
+
+[node name="SimpleSword" type="Area2D" parent="WeaponPivot" unique_id=1994557697 node_paths=PackedStringArray("animPlayer") groups=["Sword"]]
+position = Vector2(2.2120519, 32.98647)
+monitoring = false
+script = ExtResource("2_onrkg")
+animPlayer = NodePath("../../AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="WeaponPivot/SimpleSword" unique_id=2017274267]
+visible = false
+offset_top = -5.0
+offset_right = 200.0
+offset_bottom = 5.0
+color = Color(0.039215688, 0.6039216, 0.09411765, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponPivot/SimpleSword" unique_id=1501279824]
+position = Vector2(99.78795, 0.013538361)
+shape = SubResource("RectangleShape2D_i3pqv")
+disabled = true
+
+[node name="PlayerUIManager" type="CanvasLayer" parent="." unique_id=138985406]
+
+[node name="BossHealthBar" type="ColorRect" parent="PlayerUIManager" unique_id=227046674]
+offset_left = -19.0
+offset_top = -788.0
+offset_right = 21.0
+offset_bottom = -748.0
+color = Color(1, 0, 0.011764706, 1)
+
+[node name="DashBar" type="ProgressBar" parent="PlayerUIManager" unique_id=1456244134]
+offset_left = 33.0
+offset_top = 611.0
+offset_right = 97.0
+offset_bottom = 638.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_onrkg")
+show_percentage = false
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=774720049]
+texture = SubResource("GradientTexture2D_i3pqv")
+
+[connection signal="area_entered" from="PlayerHurtbox" to="PlayerHurtbox" method="OnBodyHit"]
+[connection signal="area_entered" from="WeaponPivot/SimpleSword" to="WeaponPivot/SimpleSword" method="OnAreaEntered"]
